@@ -2,7 +2,7 @@
 
 function shocc__check_realpath_cmd()
 {
-    if [ ! -e $(which realpath_) ]
+    if [ ! -e $(which realpath) ]
     then
         [ "$(uname)" == "Linux" ] && install_realpath_command="apt-get install coreutils"
         [ "$(uname)" == "Darwin" ] && install_realpath_command="brew install coreutils"
@@ -15,17 +15,10 @@ function shocc__check_realpath_cmd()
     return 0
 }
 
-function shocc__get_this_script_dir()
+function shocc__real_dirname()
 {
-    shocc__check_realpath_cmd || exit 1
+    [[ $# -eq 0 ]] && return 1
+    shocc__check_realpath_cmd || return 2
 
-    echo $(dirname $(realpath $0))
-
-    return 0
-}
-function shocc__get_this_script_name()
-{
-    echo $(basename $0)
-
-    return 0
+    echo $(dirname $(realpath $1))
 }

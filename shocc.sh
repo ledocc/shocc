@@ -12,5 +12,5 @@ fi
 
 source ${SHOCC_DIR}/color.sh
 source ${SHOCC_DIR}/errcho.sh
-source ${SHOCC_DIR}/get_this_script_dir.sh
+source ${SHOCC_DIR}/get_real_dirname.sh
 source ${SHOCC_DIR}/log_and_do.sh
