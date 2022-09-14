@@ -1,4 +1,43 @@
 
+function shocc__log_and_do__is_verbose()
+{
+    if [ -v SHOCC__LOG_AND_DO__VERBOSE ]
+    then
+	echo 1
+    else
+	echo 0
+    fi
+}
+
+function shocc__to_enable_disable()
+{
+    [[ $# -eq 0 ]] && return 1
+    [[ $1 -eq 0 ]] && echo disable && return 0
+    [[ $1 -eq 1 ]] && echo enable && return 0
+    return 2
+}
+
+function shocc__log_and_do__set_verbose()
+{
+    local prev_verbosity=$(shocc__log_and_do__is_verbose)
+
+    if [[ $# -gt 0 ]] && [[ $1 -gt 0 ]]
+    then
+	export SHOCC__LOG_AND_DO__VERBOSE
+    else
+	unset SHOCC__LOG_AND_DO__VERBOSE
+    fi
+
+    local new_verbosity=$(shocc__log_and_do__is_verbose)
+
+    
+    if [[ ${prev_verbosity} != ${new_verbosity} ]]
+    then
+	echo "shocc__log_and_do verbosity changed : $(shocc__to_enable_disable ${new_verbosity})."
+    fi
+}
+
+
 function shocc__errcho(){ >&2 echo $@; }
 
 
@@ -19,7 +58,7 @@ function shocc__log_and_do()
 
     echo -e ${log__prefix}$(date +$date_format)" ===>> $message ..."${log__suffix}
 
-    if [ -v SHOCC__LOG_AND_DO__VERBOSE ]
+    if [[ $(shocc__log_and_do__is_verbose) -eq 1 ]]
     then
 	$@
     else
