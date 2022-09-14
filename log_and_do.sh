@@ -54,8 +54,10 @@ function shocc__log_and_do()
 
     echo -e ${log__prefix}$(date +$date_format)" ===>> $message ..."${log__suffix}
 
-    if [[ $(shocc__log_and_do__is_verbose) -eq 1 ]]
+    local is_verbose=$(shocc__log_and_do__is_verbose)
+    if [[ ${is_verbose} -eq 1 ]]
     then
+	echo $@
 	$@
     else
 	$@ > /dev/null 2>&1
