@@ -14,8 +14,8 @@ fi
 
 source ${SHOCC_DIR}/color.sh
 source ${SHOCC_DIR}/errcho.sh
-source ${SHOCC_DIR}/get_real_dirname.sh
 source ${SHOCC_DIR}/log.sh
 source ${SHOCC_DIR}/log_and_do.sh
+source ${SHOCC_DIR}/real_dirname.sh
 
 SHOCC__INCLUDE_GUARD=1
