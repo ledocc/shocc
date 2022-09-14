@@ -37,10 +37,6 @@ function shocc__log_and_do__set_verbose()
     fi
 }
 
-
-function shocc__errcho(){ >&2 echo $@; }
-
-
 # usage log_and_do <log_message> <command> <...>
 function shocc__log_and_do()
 {
