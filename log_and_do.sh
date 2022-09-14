@@ -30,29 +30,25 @@ function shocc__log_and_do__set_verbose()
 
     local new_verbosity=$(shocc__log_and_do__is_verbose)
 
-    
+
     if [[ ${prev_verbosity} != ${new_verbosity} ]]
     then
 	echo "shocc__log_and_do verbosity changed : $(shocc__to_enable_disable ${new_verbosity})."
     fi
 }
 
+
 # usage log_and_do <log_message> <command> <...>
 function shocc__log_and_do()
 {
-    local date_format="[%Y-%m-%d_%H:%M:%S]"
     local log__success_color="$ColorGreen"
     local log__error_color="$ColorRed"
-    local log__reset_color="$ColorReset"
-    local log__message_color="$ColorBlue"
 
-    local log__prefix="$log__message_color"
-    local log__suffix="$log__reset_color"
 
     local message=$1
     shift
 
-    echo -e ${log__prefix}$(date +$date_format)" ===>> $message ..."${log__suffix}
+    shocc__log " ===>> $message ..."
 
     local is_verbose=$(shocc__log_and_do__is_verbose)
     if [[ ${is_verbose} -eq 1 ]]
@@ -70,6 +66,8 @@ function shocc__log_and_do()
     else
         local status_message="${log__error_color}Failed"
     fi
-    echo -e ${log__prefix}$(date +$date_format)" ===>> $message ${status_message}"${log__suffix}"\n"
+    shocc__log" ===>> $message ${status_message}"
+    echo -e "\n"
+
     return $command_result
 }

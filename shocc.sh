@@ -10,7 +10,12 @@ else
     return 1
 fi
 
+[[ "x${SHOCC__INCLUDE_GUARD}x" == "x1x" ]] && return 0
+
 source ${SHOCC_DIR}/color.sh
 source ${SHOCC_DIR}/errcho.sh
 source ${SHOCC_DIR}/get_real_dirname.sh
+source ${SHOCC_DIR}/log.sh
 source ${SHOCC_DIR}/log_and_do.sh
+
+SHOCC__INCLUDE_GUARD=1
