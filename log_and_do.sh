@@ -66,7 +66,7 @@ function shocc__log_and_do()
     else
         local status_message="${log__error_color}Failed"
     fi
-    shocc__log" ===>> $message ${status_message}"
+    shocc__log " ===>> $message ${status_message}"
     echo -e "\n"
 
     return $command_result
