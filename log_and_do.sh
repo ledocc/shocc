@@ -1,4 +1,12 @@
 
+function pshocc__log_and_do__init_verbose()
+{
+    if [ -v SHOCC__LOG_AND_DO__DEFAULT_VERBOSITY ]
+    then
+	export SHOCC__LOG_AND_DO__VERBOSE=1
+    fi
+}
+
 function shocc__log_and_do__is_verbose()
 {
     if [ -v SHOCC__LOG_AND_DO__VERBOSE ]
@@ -71,3 +79,5 @@ function shocc__log_and_do()
 
     return $command_result
 }
+
+pshocc__log_and_do__init_verbose
