@@ -17,5 +17,6 @@ source ${SHOCC_DIR}/errcho.sh
 source ${SHOCC_DIR}/log.sh
 source ${SHOCC_DIR}/log_and_do.sh
 source ${SHOCC_DIR}/real_dirname.sh
+source ${SHOCC_DIR}/stack.sh
 
 SHOCC__INCLUDE_GUARD=1
