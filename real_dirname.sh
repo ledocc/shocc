@@ -2,7 +2,7 @@
 
 function shocc__check_realpath_cmd()
 {
-    type realpath > /dev/null
+    type realpath &> /dev/null
     if [[ $? -eq 1 ]]
     then
         [[ "$(uname)" == "Linux" ]] && install_realpath_command="apt-get install coreutils"
@@ -18,7 +18,7 @@ function shocc__check_realpath_cmd()
 
 function shocc__real_dirname()
 {
-    [[ $# -eq 0 ]] && return 1
+    : ${1?'no path provided.'}
     shocc__check_realpath_cmd || return 2
 
     echo $(dirname $(realpath $1))
