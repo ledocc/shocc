@@ -61,10 +61,10 @@ function shocc__log_and_do()
     local is_verbose=$(shocc__log_and_do__is_verbose)
     if [[ ${is_verbose} -eq 1 ]]
     then
-	echo $@
-	$@
+	    echo $@
+	    $@
     else
-	$@ > /dev/null 2>&1
+	    $@ > /dev/null 2>&1
     fi
 
     local command_result=$?
